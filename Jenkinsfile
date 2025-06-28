@@ -5,7 +5,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                     echo "clonning code from github repo. "
-                    git url: https://github.com/ram-nivas234/ec2_create_using_terraform_or_jenkins.git branch branch: main
+                    git url: 'https://github.com/ram-nivas234/ec2_create_using_terraform_or_jenkins.git' branch: 'main'
                      echo "clonning code completed. "
             }
         }
