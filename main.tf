@@ -18,11 +18,7 @@ resource "aws_instance" "vm_create" {
     user        = "ubuntu"  
     private_key = file("aws_key")
     host        = self.public_ip
-  }
-    provisioner "file" {
-    source      = "./secure_password.txt"
-    destination = "/home/ubuntu/secure_password.txt"
-  }
+  
     provisioner "file" {
     source      = "./script.sh"
     destination = "/home/ubuntu/script.sh"
@@ -30,7 +26,6 @@ resource "aws_instance" "vm_create" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /home/ubuntu/script.sh",
-      "chmod 777 /home/ubuntu/secure_password.txt",
       "sudo sh /home/ubuntu/script.sh"
     ]
   }

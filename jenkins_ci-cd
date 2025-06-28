@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+ stages {
+
+        stage('Clone Repository') {
+            steps {
+                sh '''
+                mkdir -p /home/ubuntu/project-jenkins-terraform
+                git clone https://github.com/ram-nivas234/ec2_create_using_terraform_or_jenkins.git /home/ubuntu/project-jenkins-terraform
+                '''
+            }
+        }
+        stage('terraform_init') {
+            steps {
+                dir('/home/ubuntu/project-jenkins-terraform/'){
+                        sh 'terraform init'
+                }
+            }
+        }
+        stage('terraform_apply') {
+            steps {
+                dir('/home/ubuntu/project-jenkins-terraform/'){
+                     echo "terraform action is ---> ${action}"
+                     sh 'teraform ${action} --auto-aprove'
+                     #add parameters to create action 
+                     }
+                }
+               
+            }
+        }
+
+ }
+}
