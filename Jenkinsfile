@@ -18,7 +18,7 @@ pipeline {
         stage('terraform_apply&destroy') {
             steps {
                      echo "terraform action is ---> ${action}"
-                     sh 'teraform ${action} --auto-approve'
+                     sh 'terraform ${action} --auto-approve'
                       /*add parameters to create action*/
                 }
                
