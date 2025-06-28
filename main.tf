@@ -31,3 +31,4 @@ resource "aws_instance" "vm_create" {
   }
 
 }
+}
